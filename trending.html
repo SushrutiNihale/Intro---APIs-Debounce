@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        h2 {
+            text-align: center;
+            margin: 0.75em;
+        }
+        #container {
+            padding-top: 0.5em;
+            display: grid;
+            grid-template-columns: repeat(4,20%);
+            justify-content: center;
+            row-gap: 1em;
+            column-gap: 1.5em;
+        }
+        #container > div {
+            margin: auto;
+            height: 460px;
+            padding: 0.7rem 1rem 0 1rem;
+            background-color: rgb(219, 219, 219);
+            border-radius: 0.15em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #container > div > img {
+            width: 250px;
+            height: 375px;
+            object-fit: contain;
+        }
+        #container > div > p {
+            text-align: center;
+            font-size: 0.85rem;
+            margin: auto;
+            letter-spacing: 0.015em;
+        }
+    </style>
+</head>
+<body>
+    <h2>Trending Items</h2>
+    <div id="container"></div>
+</body>
+</html>
+
+<script>
+    async function getData() {
+        let res = await fetch('https://api.themoviedb.org/3/trending/all/day?api_key=8c08addb542fe88ac7be3505f28bc775');
+        let data = await res.json();
+        data = data.results;
+        showData(data);
+    }
+    getData();
+
+    function showData(data) {
+        data.forEach((el) => {
+            console.log(el)
+            let div = document.createElement('div');
+            let image = document.createElement('img');
+            let title = document.createElement('p');
+
+            image.src = `https://image.tmdb.org/t/p/original/${el.poster_path}`;
+            title.textContent = el.title || el.name || el.original_name;
+            div.append(image,title);
+            document.getElementById('container').append(div);
+        })
+    }
+</script>

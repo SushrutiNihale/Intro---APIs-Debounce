@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        input {
+            margin: 1em 0 1em 1em;
+        }
+        #search-results {
+            display: grid;
+            row-gap: 1em;
+            margin-left: 1em;
+        }
+        #search-results > div {
+            display: flex;
+            background-color: rgb(221, 221, 221);
+            width: 30vw;
+            border-radius: 0.15em;
+            padding: 0.2em;
+        }
+        #search-results img {
+            width: 150px;
+            height: 222px;
+            object-fit: contain;
+        }
+        #search-results p {
+            margin: 0;
+            padding: 0.5em 0 0 1em;
+            font-size: 0.8rem;
+            letter-spacing: 0.015em;
+        }
+        #success {
+            display: flex;
+        }
+        #success > div {
+            padding: 1em;
+            display: flex;
+            flex-direction: column;
+        }
+        #rec {
+            position: absolute;
+        }
+        #recommend {
+            width: 100px;
+        }
+        #success p {
+            margin: 0;
+            padding: 0.2em 0;
+            font-size: 0.8rem;
+            color: dimgray;
+            letter-spacing: 0.015em;
+        }
+        h2 {
+            letter-spacing: 0.015em;
+        }
+        #error {
+            display: none;
+            padding: 1em;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="movieName" placeholder="Enter movie name" oninput="getUserMovie()">
+    <!-- <input type="submit" id="submit" value="SUBMIT" onclick="getUserMovie()"> -->
+
+    <div id="search-results"></div>
+    <!-- <div id="error">
+        <img src="https://i.makeagif.com/media/11-04-2015/mfnzwt.gif">
+        <p>Oops, please try again!</p>
+    </div> -->
+    <div id="success">
+        <div>
+            <img src="" id="image">
+            <div id="rec">
+                <img src="" id="recommend">
+            </div>
+        </div>
+        <div>
+            
+            <h2 id="title"></h2>
+            <p id="rating"></p>
+            <p id="year"></p>
+            
+        </div>
+    </div>
+    
+</body>
+<script src="index.js"></script>
+</html>
